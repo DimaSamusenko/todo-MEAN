@@ -3,9 +3,16 @@ angular.module('todo', [
   'restangular'
 ]);
 
-angular.module('todo').config(function (RestangularProvider) {
+angular.module('todo').config(function ($urlRouterProvider, $stateProvider, RestangularProvider) {
   RestangularProvider.setBaseUrl('http://localhost:3000/api/v1');
   RestangularProvider.setRestangularFields({ id: "_id" });
+
+  $urlRouterProvider.otherwise('/');
+
+  $stateProvider.state('main', {
+      url        : '/',
+      templateUrl: 'views/partial-main.html'
+    });
 });
 
 angular.module('todo').service('Tasks', function (Restangular) {

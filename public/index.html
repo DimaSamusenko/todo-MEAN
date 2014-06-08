@@ -7,42 +7,9 @@
 </head>
 <body>
 
-<div class="container">
-  <div class="jumbotron">
-    <h1>To-do list</h1>
-
-    <div ng-controller="ListCtrl">
-      <form class="form-inline" name="newTaskForm" role="form" ng-submit="addTask(newTask)">
-        <div class="form-group">
-          <input type="text" name="name1" required class="form-control input-lg col-md-6" placeholder="Add task" ng-model="newTask">
-        </div>
-        <button type="submit" class="btn btn-primary btn-lg">Add</button>
-      </form>
-    </div>
-  </div>
+<div class="container" ui-view></div>
 
 
-  <div ng-controller="ListCtrl" ng-cloak>
-    <ul class="list-group">
-      <li ng-repeat="task in tasksList.model" class="list-group-item">
-        <div class="row">
-          <div class="col-md-1">
-            <button ng-click="done(task)" class="btn btn-default btn-sm">
-              <i class="glyphicon glyphicon-ok"></i>
-            </button>
-          </div>
-          <div class="col-md-10"><span class="lead text-muted"><a ng-class="{'text-muted': task.is_done}" href="">{{task.name}}</a></span></div>
-          <div class="col-md-1 text-right">
-            <button ng-click="remove(task)" class="btn btn-default btn-sm">
-              <i class="glyphicon glyphicon-trash"></i></button>
-          </div>
-        </div>
-      </li>
-    </ul>
-
-
-  </div>
-</div>
 <script src="//code.jquery.com/jquery.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>

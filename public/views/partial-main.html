@@ -1,0 +1,28 @@
+<div class="jumbotron">
+  <h1>To-do list</h1>
+
+  <div ng-include="'partials/add-form.html'" ng-controller="ListCtrl"></div>
+</div>
+
+<div ng-controller="ListCtrl">
+  <ul class="list-group">
+    <li ng-repeat="task in tasksList.model" class="list-group-item">
+      <div class="row">
+        <div class="col-md-1">
+          <button ng-click="done(task)" class="btn btn-default btn-sm">
+            <i class="glyphicon glyphicon-ok"></i>
+          </button>
+        </div>
+        <div class="col-md-10">
+          <span class="lead text-muted"><a ng-class="{'text-muted': task.is_done}" href="" ng-bind="task.name"></a></span>
+        </div>
+        <div class="col-md-1 text-right">
+          <button ng-click="remove(task)" class="btn btn-default btn-sm">
+            <i class="glyphicon glyphicon-trash"></i></button>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+
+</div>
