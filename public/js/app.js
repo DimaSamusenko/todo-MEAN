@@ -13,7 +13,7 @@ angular.module('todo').service('Tasks', function (Restangular) {
 
   this.model = tasks.getList().$object;
 
-  this.post = function (task) {
+  this.add = function (task) {
     tasks.post(task).then(function (res) {
       self.model.unshift(res);
     });
@@ -32,7 +32,7 @@ angular.module('todo').controller('ListCtrl', function ($scope, Tasks, $log) {
 
   $scope.saveTask = function (taskName) {
     var newTask = {name: taskName };
-    Tasks.post(newTask);
+    Tasks.add(newTask);
     $scope.newTask = '';
   };
 
