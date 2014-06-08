@@ -3,10 +3,12 @@ angular.module('todo', [
   'restangular'
 ]);
 
-angular.module('todo').config(function ($urlRouterProvider, $stateProvider, RestangularProvider) {
+angular.module('todo').config(function ($locationProvider, $urlRouterProvider, $stateProvider, RestangularProvider) {
+
   RestangularProvider.setBaseUrl('http://localhost:3000/api/v1');
   RestangularProvider.setRestangularFields({ id: "_id" });
 
+  $locationProvider.hashPrefix('!');
   $urlRouterProvider.otherwise('/');
 
   $stateProvider.state('main', {
