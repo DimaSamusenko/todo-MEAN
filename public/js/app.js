@@ -1,4 +1,5 @@
 angular.module('todo', [
+  'ui.router',
   'restangular'
 ]);
 
@@ -24,13 +25,22 @@ angular.module('todo').service('Tasks', function (Restangular) {
     self.model.splice(self.model.indexOf(task), 1);
   };
 
+  this.update = function (task) {
+    task.save();
+  }
+
 });
 
 angular.module('todo').controller('ListCtrl', function ($scope, Tasks, $log) {
 
   $scope.tasksList = Tasks;
 
-  $scope.saveTask = function (taskName) {
+  $scope.done = function (task) {
+    task.is_done = !task.is_done;
+    Tasks.update(task);
+  };
+
+  $scope.addTask = function (taskName) {
     var newTask = {name: taskName };
     Tasks.add(newTask);
     $scope.newTask = '';

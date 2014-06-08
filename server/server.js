@@ -17,7 +17,8 @@ var Schema = mongoose.Schema;
 
 var TaskModel = new Schema({
   name: { type: String, required: true },
-  created: { type: Date, default: Date.now }
+  created: { type: Date, default: Date.now },
+  is_done: {type: Boolean, default: false}
 });
 var Task = mongoose.model('Task', TaskModel);
 
